@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const A = [0, 1, "2", "n", true];
+        const B = [1, 2, false, "n", "m", true];
+        // result1 
+        const newA = A.slice();                 
+        const newB = B.slice();                 
+        for (let i = 0; i < newA.length; i++) { 
+            newA.map((item, index) => {         // map qua từng phần tử trong newA
+                newB.map((item2, index2) => {   // map trong từ phần tử trong newB
+                    if (item === item2) {       // khi phần tử mảng newA === phần tử mảng newB
+                        newB.splice(index2, 1)  // Xóa phần tử mảng newB theo thứ tự index2
+                        newA.splice(index, 1)   // Xóa phần tử mảng newA theo thứ tự index
+                    }
+                })
+            })
+        }
+        const result1 = newA.concat(newB); // gộp 2 mảng đã được thực hiện 
+        console.log('result1', result1)
+
+        // result 2
+        const D = A.concat(B);
+        const C = D.filter((item, index) => D.indexOf(item) !== index); //mảng C chưa những phần tử trùng nhau trong mảng D
+        var result2 = D.filter(function (item) { // Tạo   
+            return C.indexOf(item) == -1;       // Tìm vị trí các phần tử của D trong C nếu ko có => trả về phần tử ở vị trí -1 và filter các phần tử đó vào hàm result2
+        });
+        console.log('result2', result2)
+
+    </script>
+</body>
+
+</html>
