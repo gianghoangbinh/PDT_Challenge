@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p id="demo"></p>
+  <script type ="text/javascript">
+    const X = [
+  {
+  name: "this",
+  age: 33,
+  IQ: 100
+  },
+  {
+  name: "is",
+  age: 26,
+  IQ: 120
+  },
+  {
+  name: "a",
+  age: 19,
+  IQ: 160
+  },
+  {
+  name: "simple",
+  age: 24,
+  IQ: 100
+},
+  {
+  name: "test",
+  age: 26,
+  IQ: 115
+  },
+];
+
+const Z = X.slice(); // Tạo mảng Z là mảng X khi chưa sắp xếp
+// ex1
+//Sắp xếp X theo name theo bảng chữ cái
+X.sort(function(a, b) {
+  var n1 = a.name.toLowerCase();
+  var n2 = b.name.toLowerCase();
+  if(n1 < n2){
+    return -1;
+  }
+  if(n1 > n2){
+    return 1;
+  }
+  return 0;
+});
+//Sắp xếp X theo IQ giảm dần
+X.sort(function(a, b) {
+  return -a.IQ + b.IQ
+});
+//Sắp xếp X theo age tăng dần 
+X.sort(function(a, b) {
+  return a.age - b.age
+});
+console.log('X sau khi sắp xếp:', X);
+
+//Ex2
+const Y = Z.map(function (item) { //map qua từng phần tử của Z
+  return {name:item.name, rank: X.indexOf(item)+1} //tìm index của item trong X
+});
+console.log('Y', Y)
+  </script>
+</body>
+</html>
