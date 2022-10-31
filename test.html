@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./test.css">
+</head>
+
+<body>
+    <div>
+        <label for="">Họ và tên</label>
+        <input type="text" id="name">
+    </div>
+    <div>
+        <label for="">Mã sinh viên</label>
+        <input type="number" id="id">
+    </div>
+    <div>
+        <label for="">Quê quán</label>
+        <input type="text" id="country">
+    </div>
+    <div>
+        <label for="">GPA</label>
+        <input type="number" id="gpa">
+    </div>
+    <div>
+        <button onclick="add()">Submit</button>
+    </div>
+    <div>
+        <button onclick="search()">Search</button>
+    </div>
+    <table border="1" class="table" id="render">
+        <thead>
+            <tr>
+                <!-- <th>STT</th> -->
+                <th>Họ và tên</th>
+                <th>Mã sinh viên</th>
+                <th>Quê quán</th>
+                <th>GPA</th>
+            </tr>
+        </thead>
+    </table>
+    <script>
+
+        var data=[];
+
+
+        function add() {
+            var item_name = document.getElementById("name").value
+            var item_id = document.getElementById("id").value
+            var item_country = document.getElementById("country").value
+            var item_gpa = document.getElementById("gpa").value
+
+            var item = {
+                Name: item_name,
+                Id: item_id,
+                Country: item_country,
+                GPA: item_gpa
+            }
+            data.push(item)
+            render()
+        }
+
+        function render() {
+            table = `<tr>
+                <th>STT</th>
+                <th>Họ và tên</th>
+                <th>Mã sinh viên</th>
+                <th>Quê quán</th>
+                <th>GPA</th>
+                <tr>`
+            for (let i = 0; i < data.length; i++) {
+                table += `<tr>
+                <th>${i+1}</th>
+                <td>${data[i].Name}</td>
+                <td>${data[i].Id}</td>
+                <td>${data[i].Country}</td>
+                <td>${data[i].GPA}</td>
+                <tr>`
+            }
+            document.getElementById("render").innerHTML = table
+        }
+    </script>
+</body>
+
+</html>
